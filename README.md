@@ -7,7 +7,7 @@ CrypTen is a machine learning framework built on PyTorch that enables to easily 
 3. The framework is built with real-world challenges in mind. CrypTen does not scale back or oversimplify the implementation of the secure protocols. Parties run in separate processes that communicate with one another. The parties can run on separate machines as well. 
 
 
-Improvement 1:
+**Improvement 1:**
 
 CrypTen currently implements a cryptographic method called secure multiparty computation (MPC), with plans to add support for homomorphic encryption and secure enclaves in future releases.
 
@@ -17,7 +17,7 @@ CrypTen currently implements a cryptographic method called secure multiparty com
 4. Decryption method that decrypts an encrypted number using the Paillier private key and returns the decrypted integer value.
 5. Add method: this overloads the addition operator + to perform the addition of two MPCTensor instances. It checks if both operands have the same public key and returns a new MPCTensor instance with the same public key.
 
-Improvement 2:
+**Improvement 2:**
 
 Currently, performing operations like torch_tensor.add(cryptensor) or torch_tensor + cryptensor is not feasible. The issue arises because functions like __radd__ are not invoked since torch.Tensor.add raises a TypeError instead of a NotImplementedError. This prevents the reverse function from being called.
 
