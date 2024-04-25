@@ -124,24 +124,3 @@ pip install -r requirements.examples.txt
    automatic differentiation functionality of `CrypTensor`. This functionality
    makes it easy to train neural networks in CrypTen.
 
-
-## Documentation and citing
-CrypTen is documented [here](https://crypten.readthedocs.io/en/latest/).
-
-The protocols and design protocols implemented in CrypTen are described in [this paper](https://arxiv.org/pdf/2109.00984.pdf). If you want to cite CrypTen in your papers (much appreciated!), you can cite it as follows:
-```
-@inproceedings{crypten2020,
-  author={B. Knott and S. Venkataraman and A.Y. Hannun and S. Sengupta and M. Ibrahim and L.J.P. van der Maaten},
-  title={CrypTen: Secure Multi-Party Computation Meets Machine Learning},
-  booktitle={arXiv 2109.00984},
-  year={2021},
-}
-```
-
-## Join the CrypTen community
-Please contact [us](mailto:ssengupta@fb.com) to join the CrypTen community on [Slack](https://cryptensor.slack.com)
-
-See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
-
-## License
-CrypTen is MIT licensed, as found in the LICENSE file.
