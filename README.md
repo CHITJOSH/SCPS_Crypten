@@ -2,9 +2,9 @@
 CrypTen is a machine learning framework built on PyTorch that enables to easily study and develop machine learning models using secure computing techniques.
 
 **Key Contributions of Crypten:**
-It is machine learning first. The framework presents the protocols via a CrypTensor object that looks and feels exactly like a PyTorch tensor. This allows the user to use automatic differentiation and neural network modules akin to those in PyTorch. This helps make secure protocols accessible to anyone who has worked in PyTorch.
-CrypTen is library-based. Unlike other software in this space, we are not implementing a compiler but instead implement a tensor library just as PyTorch does. This makes it easier for people to debug, experiment, and explore ML models.
-The framework is built with real-world challenges in mind. CrypTen does not scale back or oversimplify the implementation of the secure protocols. Parties run in separate processes that communicate with one another. The parties can run on separate machines as well. 
+1. It is machine learning first. The framework presents the protocols via a CrypTensor object that looks and feels exactly like a PyTorch tensor. This allows the user to use automatic differentiation and neural network modules akin to those in PyTorch. This helps make secure protocols accessible to anyone who has worked in PyTorch.
+2. CrypTen is library-based. Unlike other software in this space, we are not implementing a compiler but instead implement a tensor library just as PyTorch does. This makes it easier for people to debug, experiment, and explore ML models.
+3. The framework is built with real-world challenges in mind. CrypTen does not scale back or oversimplify the implementation of the secure protocols. Parties run in separate processes that communicate with one another. The parties can run on separate machines as well. 
 
 
 Improvement 1:
