@@ -1,3 +1,33 @@
+**CrypTen**
+CrypTen is a machine learning framework built on PyTorch that enables to easily study and develop machine learning models using secure computing techniques.
+
+**Key Contributions of Crypten:**
+It is machine learning first. The framework presents the protocols via a CrypTensor object that looks and feels exactly like a PyTorch tensor. This allows the user to use automatic differentiation and neural network modules akin to those in PyTorch. This helps make secure protocols accessible to anyone who has worked in PyTorch.
+CrypTen is library-based. Unlike other software in this space, we are not implementing a compiler but instead implement a tensor library just as PyTorch does. This makes it easier for people to debug, experiment, and explore ML models.
+The framework is built with real-world challenges in mind. CrypTen does not scale back or oversimplify the implementation of the secure protocols. Parties run in separate processes that communicate with one another. The parties can run on separate machines as well. 
+
+
+Improvement 1:
+
+CrypTen currently implements a cryptographic method called secure multiparty computation (MPC), with plans to add support for homomorphic encryption and secure enclaves in future releases.
+
+1. Created a class MPCTensor that represents a tensor encrypted using the Paillier homomorphic encryption scheme. 
+2. Class method that generates a Paillier key pair (public key and private key) with the specified key length. Returns the generated key pair.
+3. An encryption method that encrypts a given integer value using the Paillier public key and returns the encrypted number.
+4. Decryption method that decrypts an encrypted number using the Paillier private key and returns the decrypted integer value.
+5. Add method: this overloads the addition operator + to perform the addition of two MPCTensor instances. It checks if both operands have the same public key and returns a new MPCTensor instance with the same public key.
+
+Improvement 2:
+
+Currently, performing operations like torch_tensor.add(cryptensor) or torch_tensor + cryptensor is not feasible. The issue arises because functions like __radd__ are not invoked since torch.Tensor.add raises a TypeError instead of a NotImplementedError. This prevents the reverse function from being called.
+
+This addresses the issue with the add, sub, and mul functions. Here's the general approach:
+1. Handling Torch Functions: We handle torch.Tensor.{add,sub,mul} functions in the __torch_function__ handler using an @implements decorator.
+2. Inheritance: We ensure that subclasses of CrypTensor inherit these decorators by adding an __init_subclass__ function in CrypTensor.
+3. Manual Registration: Since MPCTensor dynamically adds functions like add, sub, and mul after the subclass is created, we manually register these functions in MPCTensor.
+4. Adjustments: We adjust MPCTensor.binary_wrapper_function to accommodate the specific structure of MPCTensor that torch.Tensor lacks. This involves swapping the order of arguments if necessary and altering the function name to __radd__, __rsub__, etc.
+
+
 <p align="center"><img width="70%" src="https://raw.githubusercontent.com/facebookresearch/CrypTen/master/docs/_static/img/CrypTen_Identity_Horizontal_Lockup_01_FullColor.png" alt="CrypTen logo" /></p>
 
 [![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebookresearch/CrypTen/blob/master/LICENSE) [![CircleCI](https://circleci.com/gh/facebookresearch/CrypTen.svg?style=shield)](https://circleci.com/gh/facebookresearch/CrypTen/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/facebookresearch/CrypTen/blob/master/CONTRIBUTING.md)
